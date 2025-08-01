@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What Can I Cook?</title>
 </head>
 <body>
-    <h1>What Can I Cook?</h1>
-    <form method="POST" action="/search">
-        <label for="ingredients">Enter your ingredients</label>
-        <Input type="text" id="ingredients" name="ingredients" size="50" required></Input>
+    <h1>Enter the ingredients you have:</h1>
+    <form method="POST">
+        <input type="text" name="ingredients" placeholder="e.g. eggs, cheese, bread">
         <button type="submit">Find Recipes</button>
     </form>
+
+    {% if recipes %}
+        <h2>Recipes you can make:</h2>
+        <ul>
+            {% for recipe in recipes %}
+                <li>{{ recipe.title }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>
